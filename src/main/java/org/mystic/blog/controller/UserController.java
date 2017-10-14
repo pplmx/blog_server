@@ -27,7 +27,6 @@ import java.util.Map;
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserController {
-
     @Autowired
     private UserService userService;
 
