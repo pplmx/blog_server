@@ -2,10 +2,17 @@ package org.mystic.blog.controller;
 
 import org.mystic.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Map;
 
@@ -16,13 +23,16 @@ import java.util.Map;
  * Time: 13:42
  * Description:
  */
-@RestController
+@Controller
+@Path("/user")
+@Produces(MediaType.APPLICATION_JSON)
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping("showUser")
+    @GET
+    @Path("/get")
     public List<Map<String,Object>> showUser(@RequestParam Map<String,Object> map){
         List<Map<String,Object>> userList = userService.findGoods(map);
         return userList;
