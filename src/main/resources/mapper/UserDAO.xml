@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.mystic.blog.dao.UserDAO" >
+
+    <select id="select" parameterType="map" resultType="map">
+        SELECT * FROM user
+        <where>
+            <if test="userID != null and userID != 0">
+              AND userID = #{userID}
+            </if>
+            <if test="userName != null and userName != ''">
+                AND userName = #{userName}
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                AND userEmail = #{userEmail}
+            </if>
+            <if test="userPhone != null and userPhone != ''">
+                AND userPhone = #{userPhone}
+            </if>
+            <if test="userQQ != null and userQQ != ''">
+                AND userQQ = #{userQQ}
+            </if>
+            <if test="userSex != null">
+                AND userSex = #{userSex}
+            </if>
+            <if test="userLastLoginIP != null and userLastLoginIP != ''">
+                AND userLastLoginIP = #{userLastLoginIP}
+            </if>
+        </where>
+    </select>
+
+</mapper>
