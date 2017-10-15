@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @Time 17:28
  * @Description Jersey配置
  */
-@Component
+//@Component
 public class JerseyConfiguration extends ResourceConfig{
     public JerseyConfiguration(){
         // 注册类
