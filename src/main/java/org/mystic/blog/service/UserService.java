@@ -5,11 +5,17 @@ import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
- * User: mystic
- * Date: 2017/10/12
- * Time: 13:39
+ * @author: mystic
+ * @date: 2017/10/12 13:39
+ * @since: JDK1.8.0_144
+ * @version:
  * Description:
  */
 public interface UserService {
-    List<Map<String,Object>> findGoods(Map<String, Object> condition);
+    /**
+     * 根据条件查询用户
+     * @param condition 查询的条件
+     * @return 查询结果的集合
+     */
+    List<Map<String,Object>> findUser(Map<String, Object> condition);
 }

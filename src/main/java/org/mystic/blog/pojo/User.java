@@ -7,9 +7,10 @@ import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
- * User: mystic
- * Date: 2017/10/12
- * Time: 10:50
+ * @author: mystic
+ * @date: 2017/10/12 10:50
+ * @since: JDK1.8.0_144
+ * @version:
  * Description:
  */
 @Data

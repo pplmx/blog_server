@@ -1,14 +1,13 @@
 package org.mystic.blog.dao;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 
 /**
  * Created with IntelliJ IDEA.
- * User: mystic
- * Date: 2017/10/12
- * Time: 11:10
+ * @author: mystic
+ * @date: 2017/10/12 11:10
+ * @since: JDK1.8.0_144
+ * @version:
  * Description:
  */
 @Repository

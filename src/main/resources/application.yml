@@ -1,13 +1,16 @@
 server:
     port: 8080
 spring:
+    output:
+        ansi:
+            enabled: always
     jpa:
         database: mysql
     datasource:
         url: jdbc:mysql:///blog?useUnicode=true&characterEncoding=UTF-8
         username: root
         password: 123456
-        # Ê¹ÓÃdruidÊı¾İÔ´
+        # ä½¿ç”¨druidæ•°æ®æº
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
         tomcat:
@@ -20,7 +23,7 @@ spring:
             test-on-borrow: false
             test-on-return: false
 mybatis:
-    # mybatisÉ¨Ãè
+    # mybatisæ‰«æ
     mapper-locations: classpath*:mapper/*.xml
-    # Æğ±ğÃû.¿ÉÊ¡ÂÔĞ´mybatisµÄxmlÖĞµÄresultTypeµÄÈ«Â·¾¶
+    # èµ·åˆ«å.å¯çœç•¥å†™mybatisçš„xmlä¸­çš„resultTypeçš„å…¨è·¯å¾„
     type-aliases-package: org.mystic.blog.pojo
