@@ -44,4 +44,9 @@ public class UserServiceImpl implements UserService {
     public int deleteUser(Map<String, Object> condition) {
         return userDAO.delete(condition);
     }
+
+    @Override
+    public int findUserNum(Map<String, Object> condition) {
+        return userDAO.selectTotal(condition);
+    }
 }

@@ -27,6 +27,36 @@
                 AND userLastLoginIP = #{userLastLoginIP}
             </if>
         </where>
+        <if test="offset != null and limit != null">
+            LIMIT #{offset},#{limit}
+        </if>
+    </select>
+
+    <select id="selectTotal" parameterType="map" resultType="java.lang.Integer">
+        SELECT count(1) FROM user
+        <where>
+            <if test="userID != null and userID != 0">
+                AND userID = #{userID}
+            </if>
+            <if test="userName != null and userName != ''">
+                AND userName = #{userName}
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                AND userEmail = #{userEmail}
+            </if>
+            <if test="userPhone != null and userPhone != ''">
+                AND userPhone = #{userPhone}
+            </if>
+            <if test="userQQ != null and userQQ != ''">
+                AND userQQ = #{userQQ}
+            </if>
+            <if test="userSex != null">
+                AND userSex = #{userSex}
+            </if>
+            <if test="userLastLoginIP != null and userLastLoginIP != ''">
+                AND userLastLoginIP = #{userLastLoginIP}
+            </if>
+        </where>
     </select>
 
     <insert id="insert" parameterType="map">
@@ -50,7 +80,7 @@
             <if test="userPhone != null and userPhone != ''">userPhone = #{userPhone},</if>
             <if test="userQQ != null">userQQ = #{userQQ},</if>
             <if test="userSex != null">userSex = #{userSex},</if>
-            <if test="userLastLoginIP != null userLastLoginIP != ''">userLastLoginIP = #{userLastLoginIP},</if>
+            <if test="userLastLoginIP != null and userLastLoginIP != ''">userLastLoginIP = #{userLastLoginIP},</if>
         </set>
         WHERE userID = #{userID}
     </update>

@@ -41,4 +41,11 @@ public interface BaseDAO {
      */
     List<Map<String,Object>> select(Map<String, Object> condition);
 
+    /**
+     * 查询记录总数
+     * @param condition 查询的条件
+     * @return 总记录数
+     */
+    int selectTotal(Map<String,Object> condition);
+
 }

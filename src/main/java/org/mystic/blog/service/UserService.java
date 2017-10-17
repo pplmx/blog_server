@@ -34,4 +34,11 @@ public interface UserService {
      * @return 影响的行数
      */
     int deleteUser(Map<String, Object> condition);
+
+    /**
+     * 查询某类用户的总数
+     * @param condition 查询条件
+     * @return 记录总数
+     */
+    int findUserNum(Map<String, Object> condition);
 }

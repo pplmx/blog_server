@@ -7,7 +7,7 @@ spring:
     jpa:
         database: mysql
     datasource:
-        url: jdbc:mysql:///blog?useUnicode=true&characterEncoding=UTF-8
+        url: jdbc:mysql:///blog?useUnicode=true&characterEncoding=UTF-8&useSSL=true
         username: root
         password: 123456
         # 使用druid数据源
