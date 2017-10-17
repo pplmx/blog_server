@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
+ *
  * @author: mystic
  * @date: 2017/10/12 10:50
  * @since: JDK1.8.0_144
@@ -50,7 +51,7 @@ public class User {
     /**
      * 性别
      **/
-    private String userSex;
+    private int userSex;
 
     /**
      * 最近登录的IP

@@ -29,4 +29,30 @@
         </where>
     </select>
 
+    <insert id="insert" parameterType="map">
+        INSERT INTO user(userName, userPWD, userEmail, userPhone, userQQ, userSex, userLastLoginIP)
+                VALUES (#{userName},#{userPWD},#{userEmail},#{userPhone},#{userQQ},#{userSex},#{userLastLoginIP})
+    </insert>
+
+    <delete id="delete" parameterType="map">
+        DELETE FROM user WHERE userID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <update id="update" parameterType="map">
+        UPDATE user
+        <set>
+            <if test="userName != null and userName != ''">userName = #{userName},</if>
+            <if test="userPWD != null and userPWD != ''">userPWD = #{userPWD},</if>
+            <if test="userEmail != null and userEmail != ''">userEmail = #{userEmail},</if>
+            <if test="userPhone != null and userPhone != ''">userPhone = #{userPhone},</if>
+            <if test="userQQ != null">userQQ = #{userQQ},</if>
+            <if test="userSex != null">userSex = #{userSex},</if>
+            <if test="userLastLoginIP != null userLastLoginIP != ''">userLastLoginIP = #{userLastLoginIP},</if>
+        </set>
+        WHERE userID = #{userID}
+    </update>
+
 </mapper>

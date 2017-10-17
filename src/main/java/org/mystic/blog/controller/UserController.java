@@ -2,12 +2,12 @@ package org.mystic.blog.controller;
 
 import org.mystic.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.annotation.Version;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,14 +20,39 @@ import java.util.Map;
  * Description:
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
     @Resource
     private UserService userService;
 
-    @GetMapping("/get")
+    @GetMapping
     public List<Map<String,Object>> showUser(@RequestParam Map<String,Object> map){
         return userService.findUser(map);
+    }
+
+    @GetMapping("/{userID}")
+    public Map<String,Object> showUserByID(@PathVariable("userID") Integer userID){
+        Map<String,Object> map = new HashMap<>(16);
+        map.put("userID",userID);
+        return userService.findUser(map).get(0);
+    }
+
+    @PostMapping
+    public int addUser(@RequestBody Map<String,Object> condition, HttpServletRequest request){
+        return userService.saveUser(condition,request);
+    }
+
+    @PutMapping("/{userID}")
+    public int modifyUser(@PathVariable("userID") Integer userID,@RequestBody Map<String,Object> condition, HttpServletRequest request){
+        condition.put("userID",userID);
+        return userService.saveUser(condition,request);
+    }
+
+    @DeleteMapping("/{userID}")
+    public int removeUser(@PathVariable("userID") Integer userID){
+        Map<String,Object> condition = new HashMap<>(16);
+        condition.put("ids",new Integer[]{userID});
+        return userService.deleteUser(condition);
     }
 
 }
