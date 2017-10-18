@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class WebServletUtil {
 
+    private WebServletUtil() {
+    }
+
     private static final String UNKNOWN = "unknown";
     private static final String[] HEADERS_TO_TRY = {
             "X-Forwarded-For",

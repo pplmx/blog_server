@@ -1,15 +1,12 @@
 package org.mystic.blog.controller;
 
-import org.apache.ibatis.annotations.Param;
 import org.mystic.blog.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Version;
+import org.mystic.blog.utils.ResultFormatter;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,43 +26,48 @@ public class UserController {
     @GetMapping
     public Map<String, Object> showUser(@RequestParam(value = "offset", defaultValue = "0") Integer offset, @RequestParam(value = "limit", defaultValue = "5") Integer limit, @RequestParam Map<String, Object> map) {
         // why it is done,to ensure that 'offset' and 'limit' exist in MapCollection,and they are Integer
-        // I just don't wanna translate it.
-        map.putIfAbsent("offset",offset);
-        map.putIfAbsent("limit",limit);
-        map.replace("offset",offset);
-        map.replace("limit",limit);
+        // I just don't wanna translate them.
+        map.putIfAbsent("offset", offset);
+        map.putIfAbsent("limit", limit);
+        map.replace("offset", offset);
+        map.replace("limit", limit);
 
-        Map<String,Object> returnData = new HashMap<>(16);
-        returnData.put("offset",offset);
-        returnData.put("limit",limit);
-        returnData.put("total",userService.findUserNum(map));
-        returnData.put("users",userService.findUser(map));
-        return returnData;
+        Map<String, Object> result = new HashMap<>(16);
+        result.put("offset", offset);
+        result.put("limit", limit);
+        result.put("total", userService.findUserNum(map));
+        result.put("users", userService.findUser(map));
+        return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
     @GetMapping("/{userID}")
     public Map<String, Object> showUserByID(@PathVariable("userID") Integer userID) {
         Map<String, Object> map = new HashMap<>(16);
         map.put("userID", userID);
-        return userService.findUser(map).get(0);
+        Map<String, Object> result = new HashMap<>(16);
+        result.put("user", userService.findUser(map).get(0));
+        return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
     @PostMapping
-    public int addUser(@RequestBody Map<String, Object> condition, HttpServletRequest request) {
-        return userService.saveUser(condition, request);
+    public Map<String, Object> addUser(@RequestBody Map<String, Object> condition, HttpServletRequest request) {
+        int result = userService.saveUser(condition, request);
+        return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
     @PutMapping("/{userID}")
-    public int modifyUser(@PathVariable("userID") Integer userID, @RequestBody Map<String, Object> condition, HttpServletRequest request) {
+    public Map<String, Object> modifyUser(@PathVariable("userID") Integer userID, @RequestBody Map<String, Object> condition, HttpServletRequest request) {
         condition.put("userID", userID);
-        return userService.saveUser(condition, request);
+        int result = userService.saveUser(condition, request);
+        return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
     @DeleteMapping("/{userID}")
-    public int removeUser(@PathVariable("userID") Integer userID) {
+    public Map<String, Object> removeUser(@PathVariable("userID") Integer userID) {
         Map<String, Object> condition = new HashMap<>(16);
         condition.put("ids", new Integer[]{userID});
-        return userService.deleteUser(condition);
+        int result = userService.deleteUser(condition);
+        return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
 }
