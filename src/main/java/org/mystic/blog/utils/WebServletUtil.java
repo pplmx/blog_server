@@ -1,7 +1,5 @@
 package org.mystic.blog.utils;
 
-import org.omg.CORBA.UNKNOWN;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -10,8 +8,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author: mystic
  * @date: 2017/10/17 9:15
  * @since: JDK1.8.0_144
- * @version:
- * Description:
+ * @version: Description:
  */
 public class WebServletUtil {
 
