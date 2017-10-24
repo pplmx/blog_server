@@ -8,7 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
  * @author: mystic
  * @date: 2017/10/19 9:09
  * @since: JDK1.8.0_144
- * @version: Description:
+ * @version: X
+ * Description:
  */
 public class GrantedAuthorityImpl implements GrantedAuthority {
     private String authority;

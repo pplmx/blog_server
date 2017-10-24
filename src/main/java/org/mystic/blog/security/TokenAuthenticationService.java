@@ -24,7 +24,8 @@ import java.util.Map;
  * @author: mystic
  * @date: 2017/10/19 8:57
  * @since: JDK1.8.0_144
- * @version: Description:
+ * @version: X
+ * Description:
  */
 class TokenAuthenticationService {
     /**
@@ -68,8 +69,8 @@ class TokenAuthenticationService {
         try {
             response.setContentType("application/json");
             response.setStatus(HttpServletResponse.SC_OK);
-            Map<String,Object> token = new HashMap<>(16);
-            token.put("token",jwt);
+            Map<String, Object> token = new HashMap<>(16);
+            token.put("token", jwt);
             response.getOutputStream().println(JSON.toJSONString(ResultFormatter.formatResult(0, "", token)));
         } catch (IOException e) {
             e.printStackTrace();

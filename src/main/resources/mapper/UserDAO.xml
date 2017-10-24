@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.mystic.blog.dao.UserDAO" >
+<mapper namespace="org.mystic.blog.dao.UserDAO">
 
     <select id="select" parameterType="map" resultType="map">
         SELECT * FROM user
         <where>
             <if test="userID != null and userID != 0">
-              AND userID = #{userID}
+                AND userID = #{userID}
             </if>
             <if test="userName != null and userName != ''">
                 AND userName = #{userName}
@@ -60,8 +60,8 @@
     </select>
 
     <insert id="insert" parameterType="map">
-        INSERT INTO user(userName, userPWD, userEmail, userPhone, userQQ, userSex, userLastLoginIP)
-                VALUES (#{userName},#{userPWD},#{userEmail},#{userPhone},#{userQQ},#{userSex},#{userLastLoginIP})
+        INSERT INTO user (userName, userPWD, userEmail, userPhone, userQQ, userSex, userLastLoginIP)
+        VALUES (#{userName}, #{userPWD}, #{userEmail}, #{userPhone}, #{userQQ}, #{userSex}, #{userLastLoginIP})
     </insert>
 
     <delete id="delete" parameterType="map">

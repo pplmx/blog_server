@@ -8,7 +8,8 @@ import lombok.Data;
  * @author: mystic
  * @date: 2017/10/19 9:07
  * @since: JDK1.8.0_144
- * @version: Description:
+ * @version: X
+ * Description:
  */
 @Data
 class AccountCredentials {

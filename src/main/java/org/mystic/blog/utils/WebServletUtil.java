@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
  * @author: mystic
  * @date: 2017/10/17 9:15
  * @since: JDK1.8.0_144
- * @version: Description:
+ * @version: X
+ * Description:
  */
 public class WebServletUtil {
 

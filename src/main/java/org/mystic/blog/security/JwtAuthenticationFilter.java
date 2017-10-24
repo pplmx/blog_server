@@ -17,7 +17,8 @@ import java.io.IOException;
  * @author: mystic
  * @date: 2017/10/19 8:53
  * @since: JDK1.8.0_144
- * @version: Description:
+ * @version: X
+ * Description:
  */
 class JwtAuthenticationFilter extends GenericFilterBean {
 
