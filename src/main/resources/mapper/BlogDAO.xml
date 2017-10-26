@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper>
-
+    <select id="select" parameterType="map" resultType="map">
+        SELECT
+            blogID,
+            blogKey,
+            blogDescription,
+            blogName,
+            blogTitle,
+            userID
+        FROM
+            blog_info
+        <where>
+            <if test="blogID != null and blogID != 0">
+                AND blogID = #{blogID}
+            </if>
+            <if test="blogKey != null and blogKey != ''">
+                AND blogKey = #{blogKey}
+            </if>
+            <if test="blogDescription != null and blogDescription != ''">
+                AND blogDescription = #{blogDescription}
+            </if>
+            <if test="blogName != null and blogName != ''">
+                AND blogName = #{blogName}
+            </if>
+            <if test="blogTitle != null and blogTitle != ''">
+                AND blogTitle = #{blogTitle}
+            </if>
+            <if test="userID != null and userID != 0">
+                AND userID = #{userID}
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            LIMIT #{offset},#{limit}
+        </if>
+    </select>
 </mapper>
