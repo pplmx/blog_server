@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper>
+<mapper namespace="org.mystic.blog.dao.BlogDAO">
+
     <select id="select" parameterType="map" resultType="map">
-        SELECT
-            blogID,
-            blogKey,
-            blogDescription,
-            blogName,
-            blogTitle,
-            userID
-        FROM
-            blog_info
+        SELECT blogID,blogKey,blogDescription,blogName,blogTitle,userID FROM blog_info
+        <include refid="select_where"/>
+        <if test="offset != null and limit != null">
+            LIMIT #{offset},#{limit}
+        </if>
+    </select>
+
+    <select id="selectTotal" parameterType="map" resultType="java.lang.Integer">
+        SELECT count(*) FROM blog_info
+        <include refid="select_where"/>
+    </select>
+
+    <insert id="insert" parameterType="map">
+        INSERT INTO blog_info (blogKey, blogDescription, blogName, blogTitle, userID)
+        VALUES (#{blogKey}, #{blogDescription}, #{blogName}, #{blogTitle}, #{userID})
+    </insert>
+
+    <delete id="delete" parameterType="map">
+        DELETE FROM blog_info WHERE blogID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <update id="update" parameterType="map">
+        UPDATE blog_info
+        <set>
+            <if test="blogKey != null and blogKey != ''">blogKey = #{blogKey},</if>
+            <if test="blogDescription != null and blogDescription != ''">blogDescription = #{blogDescription},</if>
+            <if test="blogTitle != null and blogTitle != ''">blogTitle = #{blogTitle},</if>
+            <if test="userID != null and userID != 0">userID = #{userID},</if>
+        </set>
+        WHERE blogID = #{blogID}
+    </update>
+
+    <sql id="select_where">
         <where>
             <if test="blogID != null and blogID != 0">
                 AND blogID = #{blogID}
@@ -31,8 +59,6 @@
                 AND userID = #{userID}
             </if>
         </where>
-        <if test="offset != null and limit != null">
-            LIMIT #{offset},#{limit}
-        </if>
-    </select>
+    </sql>
+
 </mapper>

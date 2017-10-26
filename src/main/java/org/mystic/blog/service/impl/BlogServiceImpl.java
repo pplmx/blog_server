@@ -5,6 +5,7 @@ import org.mystic.blog.service.BlogService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -31,4 +32,20 @@ public class BlogServiceImpl implements BlogService {
     public List<Map<String, Object>> findBlog(Map<String, Object> condition) {
         return blogDAO.select(condition);
     }
+
+    @Override
+    public int saveBlog(Map<String, Object> condition) {
+        Object blogID = condition.get("blogID");
+        if (blogID != null) {
+            return blogDAO.update(condition);
+        }
+        return blogDAO.insert(condition);
+    }
+
+    @Override
+    public int deleteBlog(Map<String, Object> condition) {
+        return blogDAO.delete(condition);
+    }
+
+
 }
