@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.mystic.blog.dao.ArticleDAO">
+    <select id="select" parameterType="map" resultType="map">
+        SELECT
+        articleID,
+        articleName,
+        articleTime,
+        articleIP,
+        articlePV,
+        articleType,
+        articleContent,
+        articleTopShow,
+        articleStar,
+        userID,
+        sortArticleID
+        FROM article
+        <include refid="select_where"/>
+        <if test="offset != null and limit != null">
+            LIMIT #{offset},#{limit}
+        </if>
+    </select>
+
+    <select id="selectTotal" parameterType="map" resultType="java.lang.Integer">
+        SELECT count(*) FROM article
+        <include refid="select_where"/>
+    </select>
+
+    <insert id="insert" parameterType="map">
+        INSERT INTO article (articleName, articleIP, articlePV, articleType, articleContent, articleTopShow, articleStar, userID, sortArticleID)
+        VALUES (#{articleName}, #{articleIP}, #{articlePV}, #{articleType}, #{articleContent}, #{articleTopShow},
+                #{articleStar}, #{userID}, #{sortArticleID});
+    </insert>
+
+    <update id="update" parameterType="map">
+        UPDATE article
+        <set>
+            <if test="articleName != null and articleName != ''">
+                articleName = #{articleName}
+            </if>
+            <if test="articleIP != null and articleIP != ''">
+                articleIP = #{articleIP}
+            </if>
+            <if test="articlePV != null and articlePV != 0">
+                articlePV = #{articlePV}
+            </if>
+            <if test="articleType != null and articleType != 0">
+                articleType = #{articleType}
+            </if>
+            <if test="articleContent != null and articleContent != ''">
+                articleContent = #{articleContent}
+            </if>
+            <if test="articleTopShow != null and articleTopShow != 0">
+                articleTopShow = #{articleTopShow}
+            </if>
+            <if test="articleStar != null and articleStar != 0">
+                articleStar = #{articleStar}
+            </if>
+            <if test="userID != null and userID != 0">
+                userID = #{userID}
+            </if>
+            <if test="sortArticleID != null and sortArticleID != 0">
+                sortArticleID = #{sortArticleID}
+            </if>
+        </set>
+        WHERE articleID = #{articleID}
+    </update>
+
+    <sql id="select_where">
+        <where>
+            <if test="articleID != null and articleID != 0">
+                AND articleID = #{articleID}
+            </if>
+            <if test="articleName != null and articleName != ''">
+                AND articleName = #{articleName}
+            </if>
+            <if test="articleTime != null and articleTime != ''">
+                AND articleTime = #{articleTime}
+            </if>
+            <if test="articleIP != null and articleIP != ''">
+                AND articleIP = #{articleIP}
+            </if>
+            <if test="articlePV != null and articlePV != 0">
+                AND articlePV = #{articlePV}
+            </if>
+            <if test="articleType != null and articleType != 0">
+                AND articleType = #{articleType}
+            </if>
+            <if test="articleContent != null and articleContent != ''">
+                AND articleContent = #{articleContent}
+            </if>
+            <if test="articleTopShow != null and articleTopShow != 0">
+                AND articleTopShow = #{articleTopShow}
+            </if>
+            <if test="articleStar != null and articleStar != 0">
+                AND articleStar = #{articleStar}
+            </if>
+            <if test="userID != null and userID != 0">
+                AND userID = #{userID}
+            </if>
+            <if test="sortArticleID != null and sortArticleID != 0">
+                AND sortArticleID = #{sortArticleID}
+            </if>
+        </where>
+    </sql>
+</mapper>
