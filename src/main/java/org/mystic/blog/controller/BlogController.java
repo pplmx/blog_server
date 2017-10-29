@@ -55,14 +55,14 @@ public class BlogController {
     }
 
     @PutMapping("/{blogID}")
-    public Map<String, Object> modifyUser(@PathVariable("blogID") Integer blogID, @RequestBody Map<String, Object> condition) {
+    public Map<String, Object> modifyBlog(@PathVariable("blogID") Integer blogID, @RequestBody Map<String, Object> condition) {
         condition.put("blogID", blogID);
         int result = blogService.saveBlog(condition);
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
     @DeleteMapping("/{blogID}")
-    public Map<String, Object> removeUser(@PathVariable("blogID") Integer blogID) {
+    public Map<String, Object> removeBlog(@PathVariable("blogID") Integer blogID) {
         Map<String, Object> condition = new HashMap<>(16);
         condition.put("ids", new Integer[]{blogID});
         int result = blogService.deleteBlog(condition);

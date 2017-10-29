@@ -66,6 +66,13 @@
         WHERE articleID = #{articleID}
     </update>
 
+    <delete id="delete" parameterType="map">
+        DELETE FROM article WHERE articleID IN
+        <foreach collection="ids" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
     <sql id="select_where">
         <where>
             <if test="articleID != null and articleID != 0">

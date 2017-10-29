@@ -48,3 +48,13 @@
 2017-10-26 17:21:54.819   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
 2017-10-26 17:21:54.834   INFO  --- [  restartedMain] g.apache.tomcat.util.net.NioSelectorPool : Using a shared selector for servlet write/read
 2017-10-26 17:21:54.858   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Started BlogApplication in 3.829 seconds (JVM running for 5.084)
+2017-10-26 19:32:07.074   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Starting BlogApplication on Administrator with PID 11208 (E:\JetBrains\IdeaProjects\Workspace\Blog\target\classes started by cy in E:\JetBrains\IdeaProjects\Workspace\Blog)
+2017-10-26 19:32:07.093   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2017-10-26 19:32:07.808   INFO  --- [kground-preinit] ibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.5.Final
+2017-10-26 19:32:12.327   INFO  --- [  restartedMain] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2017-10-26 19:32:12.329   INFO  --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-10-26 19:32:12.765   INFO  --- [ost-startStop-1] e.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2017-10-26 19:32:18.415   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2017-10-26 19:32:18.440   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2017-10-26 19:32:18.451   INFO  --- [  restartedMain] g.apache.tomcat.util.net.NioSelectorPool : Using a shared selector for servlet write/read
+2017-10-26 19:32:18.483   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Started BlogApplication in 12.731 seconds (JVM running for 15.861)
