@@ -31,7 +31,7 @@ class TokenAuthenticationService {
     /**
      * 5天
      */
-    private static final long EXPIRATION_TIME = 432_000_000;
+    private static final long EXPIRATION_TIME = 432_000_000L;
     /**
      * jwt密码
      */

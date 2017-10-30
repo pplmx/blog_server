@@ -29,8 +29,8 @@
     <update id="update" parameterType="map">
         UPDATE article_sort
         <set>
-            <if test="sortArticleName != null and sortArticleName != ''">sortArticleName = #{sortArticleName}</if>
-            <if test="userID != null and userID != 0">userID = #{userID}</if>
+            <if test="sortArticleName != null and sortArticleName != ''">sortArticleName = #{sortArticleName},</if>
+            <if test="userID != null and userID != 0">userID = #{userID},</if>
         </set>
         WHERE sortArticleID = #{sortArticleID}
     </update>

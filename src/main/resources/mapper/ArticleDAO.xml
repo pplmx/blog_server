@@ -36,31 +36,31 @@
         UPDATE article
         <set>
             <if test="articleName != null and articleName != ''">
-                articleName = #{articleName}
+                articleName = #{articleName},
             </if>
             <if test="articleIP != null and articleIP != ''">
-                articleIP = #{articleIP}
+                articleIP = #{articleIP},
             </if>
             <if test="articlePV != null and articlePV != 0">
-                articlePV = #{articlePV}
+                articlePV = #{articlePV},
             </if>
             <if test="articleType != null and articleType != 0">
-                articleType = #{articleType}
+                articleType = #{articleType},
             </if>
             <if test="articleContent != null and articleContent != ''">
-                articleContent = #{articleContent}
+                articleContent = #{articleContent},
             </if>
             <if test="articleTopShow != null and articleTopShow != 0">
-                articleTopShow = #{articleTopShow}
+                articleTopShow = #{articleTopShow},
             </if>
             <if test="articleStar != null and articleStar != 0">
-                articleStar = #{articleStar}
+                articleStar = #{articleStar},
             </if>
             <if test="userID != null and userID != 0">
-                userID = #{userID}
+                userID = #{userID},
             </if>
             <if test="sortArticleID != null and sortArticleID != 0">
-                sortArticleID = #{sortArticleID}
+                sortArticleID = #{sortArticleID},
             </if>
         </set>
         WHERE articleID = #{articleID}
