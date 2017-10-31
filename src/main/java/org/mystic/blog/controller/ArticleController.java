@@ -1,5 +1,9 @@
 package org.mystic.blog.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.mystic.blog.service.ArticleService;
 import org.mystic.blog.utils.ResultFormatter;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +22,19 @@ import java.util.Map;
  * @version: X
  * Description:
  */
+@Api("API_Article")
 @RestController
 @RequestMapping("/articles")
 public class ArticleController {
     @Resource
     private ArticleService articleService;
 
+    @ApiOperation(value = "获取所有文章信息", notes = "获取所有文章信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "offset", value = "查询起始", defaultValue = "0", dataType = "integer", paramType = "query"),
+            @ApiImplicitParam(name = "limit", value = "查询数量", defaultValue = "5", dataType = "integer", paramType = "query"),
+            @ApiImplicitParam(name = "map", value = "请求参数", dataType = "Map", paramType = "query")
+    })
     @GetMapping
     public Map<String, Object> showArticle(@RequestParam(value = "offset", defaultValue = "0") Integer offset, @RequestParam(value = "limit", defaultValue = "5") Integer limit, @RequestParam Map<String, Object> map) {
         map.putIfAbsent("offset", offset);
@@ -39,6 +50,8 @@ public class ArticleController {
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
+    @ApiOperation(value = "获取文章信息", notes = "获取文章信息")
+    @ApiImplicitParam(name = "articleID", value = "文章ID", required = true, dataType = "integer", paramType = "path")
     @GetMapping("/{articleID}")
     public Map<String, Object> showArticleByID(@PathVariable Integer articleID, HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>(16);
@@ -52,12 +65,19 @@ public class ArticleController {
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
+    @ApiOperation(value = "添加文章信息", notes = "添加文章信息")
+    @ApiImplicitParam(name = "condition", value = "文章信息", required = true, dataType = "Map", paramType = "body")
     @PostMapping
     public Map<String, Object> addArticle(@RequestBody Map<String, Object> condition, HttpServletRequest request) {
         int result = articleService.saveArticle(condition, request);
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
+    @ApiOperation(value = "修改文章信息", notes = "修改文章信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "articleID", value = "文章ID", required = true, dataType = "integer", paramType = "path"),
+            @ApiImplicitParam(name = "condition", value = "文章需要修改的信息", required = true, dataType = "Map", paramType = "body")
+    })
     @PutMapping("/{articleID}")
     public Map<String, Object> modifyArticle(@PathVariable("articleID") Integer articleID, @RequestBody Map<String, Object> condition, HttpServletRequest request) {
         condition.put("articleID", articleID);
@@ -65,6 +85,8 @@ public class ArticleController {
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
+    @ApiOperation(value = "删除文章信息", notes = "删除文章信息")
+    @ApiImplicitParam(name = "articleID", value = "文章ID", required = true, dataType = "integer", paramType = "path")
     @DeleteMapping("/{articleID}")
     public Map<String, Object> removeArticle(@PathVariable("articleID") Integer articleID) {
         Map<String, Object> condition = new HashMap<>(16);
