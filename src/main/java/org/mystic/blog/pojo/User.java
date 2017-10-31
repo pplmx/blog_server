@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,4 +27,5 @@ public class User {
     private int userSex;
     private String userLastLoginIP;
     private Date userLastLoginTime;
+    private List<String> roles;
 }
