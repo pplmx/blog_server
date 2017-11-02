@@ -29,7 +29,7 @@ import javax.annotation.Resource;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
     private JwtAuthenticationEntryPoint unauthorizedHandler;
@@ -72,6 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers(
                         HttpMethod.GET,
                         "/",
+                        "/v2/api-docs",
                         "/*.html",
                         "/favicon.ico",
                         "/**/*.html",

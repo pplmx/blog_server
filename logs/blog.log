@@ -956,3 +956,66 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Colu
 2017-11-02 15:07:36.684   INFO  --- [nio-8080-exec-5] g.security2.JwtAuthenticationTokenFilter : checking authentication cc
 2017-11-02 15:07:36.689   INFO  --- [nio-8080-exec-5] g.security2.JwtAuthenticationTokenFilter : authenticated user cc, setting security context
 2017-11-02 15:07:36.690   INFO  --- [nio-8080-exec-5] g.security2.JwtAuthenticationTokenFilter : checking authentication cc
+2017-11-02 15:51:15.359   INFO  --- [           main] org.mystic.blog.BlogApplicationTests     : Starting BlogApplicationTests on sj143 with PID 8896 (started by mystic in D:\JetBrains\IdeaProjects\Blog)
+2017-11-02 15:51:15.361   INFO  --- [           main] org.mystic.blog.BlogApplicationTests     : No active profile set, falling back to default profiles: default
+2017-11-02 15:51:15.688   INFO  --- [kground-preinit] ibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.5.Final
+2017-11-02 15:51:21.013   INFO  --- [           main] plugins.DocumentationPluginsBootstrapper : Context refreshed
+2017-11-02 15:51:21.044   INFO  --- [           main] plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-11-02 15:51:21.058   INFO  --- [           main] .web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2017-11-02 15:51:21.470   INFO  --- [           main] org.mystic.blog.BlogApplicationTests     : Started BlogApplicationTests in 6.424 seconds (JVM running for 7.482)
+2017-11-02 16:10:45.987   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Starting BlogApplication on sj143 with PID 13308 (D:\JetBrains\IdeaProjects\Blog\target\classes started by mystic in D:\JetBrains\IdeaProjects\Blog)
+2017-11-02 16:10:45.991   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2017-11-02 16:10:46.336   INFO  --- [kground-preinit] ibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.5.Final
+2017-11-02 16:10:48.010   INFO  --- [  restartedMain] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2017-11-02 16:10:48.011   INFO  --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-11-02 16:10:48.106   INFO  --- [ost-startStop-1] e.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2017-11-02 16:10:51.005   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Context refreshed
+2017-11-02 16:10:51.017   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-11-02 16:10:51.027   INFO  --- [  restartedMain] .web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2017-11-02 16:10:51.286   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2017-11-02 16:10:51.294   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2017-11-02 16:10:51.309   INFO  --- [  restartedMain] g.apache.tomcat.util.net.NioSelectorPool : Using a shared selector for servlet write/read
+2017-11-02 16:10:51.335   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Started BlogApplication in 5.655 seconds (JVM running for 6.957)
+2017-11-02 16:11:17.637   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Starting BlogApplication on sj143 with PID 5564 (D:\JetBrains\IdeaProjects\Blog\target\classes started by mystic in D:\JetBrains\IdeaProjects\Blog)
+2017-11-02 16:11:17.640   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2017-11-02 16:11:17.738   INFO  --- [kground-preinit] ibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.5.Final
+2017-11-02 16:11:19.370   INFO  --- [  restartedMain] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2017-11-02 16:11:19.371   INFO  --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-11-02 16:11:19.464   INFO  --- [ost-startStop-1] e.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2017-11-02 16:11:22.217   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Context refreshed
+2017-11-02 16:11:22.230   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-11-02 16:11:22.239   INFO  --- [  restartedMain] .web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2017-11-02 16:11:22.487   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2017-11-02 16:11:22.494   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2017-11-02 16:11:22.509   INFO  --- [  restartedMain] g.apache.tomcat.util.net.NioSelectorPool : Using a shared selector for servlet write/read
+2017-11-02 16:11:22.534   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Started BlogApplication in 5.209 seconds (JVM running for 6.603)
+2017-11-02 16:12:22.955   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Starting BlogApplication on sj143 with PID 5564 (D:\JetBrains\IdeaProjects\Blog\target\classes started by mystic in D:\JetBrains\IdeaProjects\Blog)
+2017-11-02 16:12:22.956   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2017-11-02 16:12:23.274   WARN  --- [  restartedMain] tis.spring.mapper.ClassPathMapperScanner : No MyBatis mapper was found in '[org.mystic.blog.dao]' package. Please check your configuration.
+2017-11-02 16:12:23.299   WARN  --- [  restartedMain] tis.spring.mapper.ClassPathMapperScanner : No MyBatis mapper was found in '[org.mystic.blog]' package. Please check your configuration.
+2017-11-02 16:12:23.529   INFO  --- [  restartedMain] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2017-11-02 16:12:23.529   INFO  --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-11-02 16:12:23.558   INFO  --- [ost-startStop-1] e.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2017-11-02 16:12:23.983   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2017-11-02 16:12:23.983   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2017-11-02 16:12:23.996   INFO  --- [  restartedMain] g.apache.tomcat.util.net.NioSelectorPool : Using a shared selector for servlet write/read
+2017-11-02 16:12:24.072   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Started BlogApplication in 1.208 seconds (JVM running for 68.141)
+2017-11-02 16:12:26.025   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Starting BlogApplication on sj143 with PID 5564 (D:\JetBrains\IdeaProjects\Blog\target\classes started by mystic in D:\JetBrains\IdeaProjects\Blog)
+2017-11-02 16:12:26.025   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2017-11-02 16:12:27.012   INFO  --- [           main] org.mystic.blog.BlogApplicationTests     : Starting BlogApplicationTests on sj143 with PID 13892 (started by mystic in D:\JetBrains\IdeaProjects\Blog)
+2017-11-02 16:12:27.014   INFO  --- [           main] org.mystic.blog.BlogApplicationTests     : No active profile set, falling back to default profiles: default
+2017-11-02 16:12:27.018   INFO  --- [  restartedMain] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2017-11-02 16:12:27.018   INFO  --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-11-02 16:12:27.051   INFO  --- [ost-startStop-1] e.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2017-11-02 16:12:27.373   INFO  --- [kground-preinit] ibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.5.Final
+2017-11-02 16:12:28.815   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Context refreshed
+2017-11-02 16:12:28.819   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-11-02 16:12:28.834   INFO  --- [  restartedMain] .web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2017-11-02 16:12:29.083   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2017-11-02 16:12:29.083   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2017-11-02 16:12:29.093   INFO  --- [  restartedMain] g.apache.tomcat.util.net.NioSelectorPool : Using a shared selector for servlet write/read
+2017-11-02 16:12:29.122   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Started BlogApplication in 3.175 seconds (JVM running for 73.191)
+2017-11-02 16:12:32.671   INFO  --- [           main] plugins.DocumentationPluginsBootstrapper : Context refreshed
+2017-11-02 16:12:32.691   INFO  --- [           main] plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-11-02 16:12:32.702   INFO  --- [           main] .web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2017-11-02 16:12:32.943   INFO  --- [           main] org.mystic.blog.BlogApplicationTests     : Started BlogApplicationTests in 6.294 seconds (JVM running for 7.325)
