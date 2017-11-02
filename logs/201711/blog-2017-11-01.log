@@ -1,0 +1,32 @@
+2017-11-01 16:20:14.623   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Starting BlogApplication on sj143 with PID 3852 (D:\JetBrains\IdeaProjects\Blog\target\classes started by mystic in D:\JetBrains\IdeaProjects\Blog)
+2017-11-01 16:20:14.657   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2017-11-01 16:20:14.914   INFO  --- [kground-preinit] ibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.5.Final
+2017-11-01 16:21:08.429   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Starting BlogApplication on sj143 with PID 13896 (D:\JetBrains\IdeaProjects\Blog\target\classes started by mystic in D:\JetBrains\IdeaProjects\Blog)
+2017-11-01 16:21:08.432   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2017-11-01 16:21:08.534   INFO  --- [kground-preinit] ibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.5.Final
+2017-11-01 16:21:11.202   INFO  --- [  restartedMain] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2017-11-01 16:21:11.204   INFO  --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-11-01 16:21:11.339   INFO  --- [ost-startStop-1] e.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2017-11-01 16:21:15.174   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Context refreshed
+2017-11-01 16:21:15.209   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-11-01 16:21:15.226   INFO  --- [  restartedMain] .web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2017-11-01 16:21:15.489   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2017-11-01 16:21:15.513   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2017-11-01 16:21:15.528   INFO  --- [  restartedMain] g.apache.tomcat.util.net.NioSelectorPool : Using a shared selector for servlet write/read
+2017-11-01 16:21:15.559   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Started BlogApplication in 7.405 seconds (JVM running for 8.887)
+2017-11-01 16:22:03.553   INFO  --- [nio-8080-exec-1] e.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-11-01 17:33:31.881   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Starting BlogApplication on sj143 with PID 8584 (D:\JetBrains\IdeaProjects\Blog\target\classes started by mystic in D:\JetBrains\IdeaProjects\Blog)
+2017-11-01 17:33:31.883   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : No active profile set, falling back to default profiles: default
+2017-11-01 17:33:31.980   INFO  --- [kground-preinit] ibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.5.Final
+2017-11-01 17:33:33.843   INFO  --- [  restartedMain] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2017-11-01 17:33:33.845   INFO  --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-11-01 17:33:33.943   INFO  --- [ost-startStop-1] e.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2017-11-01 17:33:36.877   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Context refreshed
+2017-11-01 17:33:36.889   INFO  --- [  restartedMain] plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-11-01 17:33:36.900   INFO  --- [  restartedMain] .web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2017-11-01 17:33:37.135   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Initializing ProtocolHandler ["http-nio-8080"]
+2017-11-01 17:33:37.141   INFO  --- [  restartedMain] g.apache.coyote.http11.Http11NioProtocol : Starting ProtocolHandler ["http-nio-8080"]
+2017-11-01 17:33:37.156   INFO  --- [  restartedMain] g.apache.tomcat.util.net.NioSelectorPool : Using a shared selector for servlet write/read
+2017-11-01 17:33:37.180   INFO  --- [  restartedMain] org.mystic.blog.BlogApplication          : Started BlogApplication in 5.627 seconds (JVM running for 7.081)
+2017-11-01 17:33:46.921   INFO  --- [nio-8080-exec-3] e.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-11-01 17:33:47.190   INFO  --- [nio-8080-exec-3] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited

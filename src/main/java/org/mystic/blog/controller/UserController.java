@@ -1,13 +1,17 @@
 package org.mystic.blog.controller;
 
 import io.swagger.annotations.*;
+import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
 import org.mystic.blog.service.UserService;
 import org.mystic.blog.utils.ResultFormatter;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,14 +30,14 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @ApiOperation(value = "获取所有用户信息", notes = "获取所有用户信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "offset", value = "查询起始", defaultValue = "0", dataType = "integer", paramType = "query"),
-            @ApiImplicitParam(name = "limit", value = "查询数量", defaultValue = "5", dataType = "integer", paramType = "query"),
-            @ApiImplicitParam(name = "map", value = "请求参数", dataType = "Map", paramType = "query")
+            @ApiImplicitParam(name = "limit", value = "查询数量", defaultValue = "5", dataType = "integer", paramType = "query")
     })
     @GetMapping
-    public Map<String, Object> showUser(@RequestParam(value = "offset", defaultValue = "0") Integer offset, @RequestParam(value = "limit", defaultValue = "5") Integer limit, @RequestParam Map<String, Object> map) {
+    public Map<String, Object> showUser(@RequestParam(value = "offset", defaultValue = "0") Integer offset, @RequestParam(value = "limit", defaultValue = "5") Integer limit, Map<String, Object> map) {
         // why it is done,to ensure that 'offset' and 'limit' exist in MapCollection,and they are Integer
         // I just don't wanna translate them.
         map.putIfAbsent("offset", offset);
@@ -56,7 +60,8 @@ public class UserController {
         Map<String, Object> map = new HashMap<>(16);
         map.put("userID", userID);
         Map<String, Object> result = new HashMap<>(16);
-        result.put("user", userService.findUser(map).get(0));
+        List<Map<String, Object>> userList = userService.findUser(map);
+        result.put("role", userList == null ? null : userList.get(0));
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
@@ -68,6 +73,7 @@ public class UserController {
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
+    @PostAuthorize("returnObject.username == principal.username or hasRole('SUPER')")
     @ApiOperation(value = "修改用户信息", notes = "修改用户信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userID", value = "用户ID", required = true, dataType = "integer", paramType = "path"),
@@ -80,6 +86,7 @@ public class UserController {
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
+    @PreAuthorize("hasRole('SUPER')")
     @ApiOperation(value = "删除用户信息", notes = "删除用户信息")
     @ApiImplicitParam(name = "userID", value = "用户ID", required = true, dataType = "integer", paramType = "path")
     @DeleteMapping("/{userID}")
@@ -87,6 +94,26 @@ public class UserController {
         Map<String, Object> condition = new HashMap<>(16);
         condition.put("ids", new Integer[]{userID});
         int result = userService.deleteUser(condition);
+        return ResultFormatter.formatResult(200, "SUCCESS", result);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/{userID}/{roleID}")
+    public Map<String,Object> removeUserRole(@PathVariable("userID") @Required Integer userID, @PathVariable("roleID") Integer roleID){
+        Map<String,Object> condition = new HashMap<>(16);
+        condition.put("userID",userID);
+        condition.put("roleID",roleID);
+        int result = userService.deleteUserRole(condition);
+        return ResultFormatter.formatResult(200, "SUCCESS", result);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/{userID}/{roleID}")
+    public Map<String,Object> addUserRole(@PathVariable("userID") @Required Integer userID, @PathVariable("roleID") @Required Integer roleID){
+        Map<String,Object> condition = new HashMap<>(16);
+        condition.put("userID",userID);
+        condition.put("roleID",roleID);
+        int result = userService.insertUserRole(condition);
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 

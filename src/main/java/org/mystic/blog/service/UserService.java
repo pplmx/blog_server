@@ -46,4 +46,18 @@ public interface UserService {
      * @return 记录总数
      */
     int findUserNum(Map<String, Object> condition);
+
+    /**
+     * 撤销用户角色
+     * @param condition 条件
+     * @return 影响的行数
+     */
+    int deleteUserRole(Map<String, Object> condition);
+
+    /**
+     * 授予用户角色
+     * @param condition 条件
+     * @return 影响的行数
+     */
+    int insertUserRole(Map<String, Object> condition);
 }

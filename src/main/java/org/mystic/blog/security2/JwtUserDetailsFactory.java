@@ -1,4 +1,4 @@
-package org.mystic.blog.security;
+package org.mystic.blog.security2;
 
 import org.mystic.blog.pojo.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,21 +16,15 @@ import java.util.stream.Collectors;
  * @version: X
  * Description:
  */
-public class JwtUserFactory {
-    private JwtUserFactory() {
+class JwtUserDetailsFactory {
+    private JwtUserDetailsFactory() {
     }
 
-    public static JwtUser create(User user) {
-        return new JwtUser(
+    static JwtUserDetails create(User user) {
+        return new JwtUserDetails(
                 user.getUserID(),
                 user.getUserName(),
                 user.getUserPWD(),
-                user.getUserEmail(),
-                user.getUserPhone(),
-                user.getUserQQ(),
-                user.getUserSex(),
-                user.getUserLastLoginIP(),
-                user.getUserLastLoginTime(),
                 mapToGrantedAuthorities(user.getRoles()));
     }
 

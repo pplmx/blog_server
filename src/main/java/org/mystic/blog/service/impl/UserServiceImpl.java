@@ -42,11 +42,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int deleteUser(Map<String, Object> condition) {
+        // 先删除用户的角色信息,再删除用户信息
+        userDAO.deleteRole(condition);
         return userDAO.delete(condition);
     }
 
     @Override
     public int findUserNum(Map<String, Object> condition) {
         return userDAO.selectTotal(condition);
+    }
+
+    @Override
+    public int deleteUserRole(Map<String, Object> condition) {
+        return userDAO.deleteRole(condition);
+    }
+
+    @Override
+    public int insertUserRole(Map<String, Object> condition) {
+        return userDAO.insertRole(condition);
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.mystic.blog.dao.RoleDAO">
+    <insert id="insert" parameterType="map">
+        INSERT INTO role (roleName) VALUES (#{roleName})
+    </insert>
+
+    <delete id="delete" parameterType="map">
+        DELETE FROM role
+        WHERE roleID = #{roleID}
+    </delete>
+
+    <update id="update" parameterType="map">
+        UPDATE role
+        SET roleName = #{roleName}
+        WHERE roleID = #{roleID}
+    </update>
+
+    <select id="select" parameterType="map" resultType="map">
+        SELECT roleID,roleName FROM role
+        <include refid="select_where"/>
+        <if test="offset != null and limit != null">
+            LIMIT #{offset},#{limit}
+        </if>
+    </select>
+
+    <select id="selectTotal" parameterType="map" resultType="java.lang.Integer">
+        SELECT count(*) FROM role
+        <include refid="select_where"/>
+    </select>
+
+    <sql id="select_where">
+        <where>
+            <if test="roleID != null and roleID != 0">
+                AND roleID = #{roleID}
+            </if>
+            <if test="roleName != null and roleName != ''">
+                AND roleName = #{roleName}
+            </if>
+        </where>
+    </sql>
+</mapper>

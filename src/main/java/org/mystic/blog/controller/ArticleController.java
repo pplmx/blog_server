@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,11 +33,10 @@ public class ArticleController {
     @ApiOperation(value = "获取所有文章信息", notes = "获取所有文章信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "offset", value = "查询起始", defaultValue = "0", dataType = "integer", paramType = "query"),
-            @ApiImplicitParam(name = "limit", value = "查询数量", defaultValue = "5", dataType = "integer", paramType = "query"),
-            @ApiImplicitParam(name = "map", value = "请求参数", dataType = "Map", paramType = "query")
+            @ApiImplicitParam(name = "limit", value = "查询数量", defaultValue = "5", dataType = "integer", paramType = "query")
     })
     @GetMapping
-    public Map<String, Object> showArticle(@RequestParam(value = "offset", defaultValue = "0") Integer offset, @RequestParam(value = "limit", defaultValue = "5") Integer limit, @RequestParam Map<String, Object> map) {
+    public Map<String, Object> showArticle(@RequestParam(value = "offset", defaultValue = "0") Integer offset, @RequestParam(value = "limit", defaultValue = "5") Integer limit, Map<String, Object> map) {
         map.putIfAbsent("offset", offset);
         map.putIfAbsent("limit", limit);
         map.replace("offset", offset);
@@ -57,10 +57,13 @@ public class ArticleController {
         Map<String, Object> map = new HashMap<>(16);
         map.put("articleID", articleID);
         Map<String, Object> result = new HashMap<>(16);
-        Map<String, Object> article = articleService.findArticle(map).get(0);
-        // 每查询一次,PV+1
-        article.replace("articlePV", Integer.parseInt(article.get("articlePV").toString()) + 1);
-        articleService.saveArticle(article, request);
+        List<Map<String, Object>> articleList = articleService.findArticle(map);
+        Map<String, Object> article = articleList == null ? null : articleList.get(0);
+        if(article!=null){
+            // 每查询一次,PV+1
+            article.replace("articlePV", Integer.parseInt(article.get("articlePV").toString()) + 1);
+            articleService.saveArticle(article, request);
+        }
         result.put("article", article);
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }

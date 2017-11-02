@@ -41,6 +41,43 @@
         WHERE userID = #{userID}
     </update>
 
+    <!--user_role表的操作-->
+    <insert id="insertRole" parameterType="map">
+        INSERT INTO user_role VALUES (#{userID},#{roleID})
+    </insert>
+
+    <delete id="deleteRole" parameterType="map">
+        DELETE FROM user_role
+        <where>
+            <choose>
+                <when test="userID != null or roleID != null">
+                    <if test="userID != null and userID != 0">AND userID = #{userID}</if>
+                    <if test="roleID != null and roleID != 0">AND roleID = #{roleID}</if>
+                </when>
+                <otherwise>
+                    FALSE
+                </otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <select id="selectRole" parameterType="map" resultType="map">
+        SELECT
+            ur.userID,
+            ur.roleID,
+            r.roleName
+        FROM
+            user_role ur,role r
+        <where>
+            ur.roleID = r.roleID
+            <if test="userID != null and userID != 0">AND ur.userID = #{userID}</if>
+            <if test="roleID != null and roleID != 0">AND ur.roleID = #{roleID}</if>
+        </where>
+        <if test="offset != null and limit != null">
+            LIMIT #{offset},#{limit}
+        </if>
+    </select>
+
     <sql id="select_where">
         <where>
             <if test="userID != null and userID != 0">

@@ -1,4 +1,4 @@
-package org.mystic.blog.security;
+package org.mystic.blog.security2;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,28 +15,16 @@ import java.util.Date;
  * @version: X
  * Description:
  */
-public class JwtUser implements UserDetails {
+public class JwtUserDetails implements UserDetails {
     private final Integer userID;
     private final String userName;
     private final String userPWD;
-    private final String userEmail;
-    private final String userPhone;
-    private final String userQQ;
-    private final int userSex;
-    private final String userLastLoginIP;
-    private final Date userLastLoginTime;
     private final Collection<? extends GrantedAuthority> authorities;
 
-    JwtUser(Integer userID, String userName, String userPWD, String userEmail, String userPhone, String userQQ, int userSex, String userLastLoginIP, Date userLastLoginTime, Collection<? extends GrantedAuthority> authorities) {
+    JwtUserDetails(Integer userID, String userName, String userPWD, Collection<? extends GrantedAuthority> authorities) {
         this.userID = userID;
         this.userName = userName;
         this.userPWD = userPWD;
-        this.userEmail = userEmail;
-        this.userPhone = userPhone;
-        this.userQQ = userQQ;
-        this.userSex = userSex;
-        this.userLastLoginIP = userLastLoginIP;
-        this.userLastLoginTime = userLastLoginTime;
         this.authorities = authorities;
     }
 
@@ -67,17 +55,17 @@ public class JwtUser implements UserDetails {
      */
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     /**
-     * 账户是否被锁定
+     * 账户是否未被锁定
      *
      * @return
      */
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     /**
@@ -87,7 +75,7 @@ public class JwtUser implements UserDetails {
      */
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     /**
@@ -97,34 +85,11 @@ public class JwtUser implements UserDetails {
      */
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     public Integer getUserID() {
         return userID;
     }
 
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public String getUserPhone() {
-        return userPhone;
-    }
-
-    public String getUserQQ() {
-        return userQQ;
-    }
-
-    public int getUserSex() {
-        return userSex;
-    }
-
-    public String getUserLastLoginIP() {
-        return userLastLoginIP;
-    }
-
-    public Date getUserLastLoginTime() {
-        return userLastLoginTime;
-    }
 }

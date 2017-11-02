@@ -21,7 +21,7 @@
         </Console>
         <Console name="ConsoleErrorLog" target="SYSTEM_OUT">
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS}  %5p ${PID:-} --- [%15.15t] %-40.40logger{40} : %m%n}{FATAL=Bright Red}"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS}  %5p ${PID:-} --- [%15.15t] %-40.40logger{40} : %m%n"/>
         </Console>
 
         <!-- INFO级别日志 按天输出到文件，归类到年月目录 -->
@@ -49,7 +49,7 @@
     <Loggers>
 
         <!-- 项目整体默认日志配置，此处最低级别为 debug -->
-        <Root level="info">
+        <Root level="debug">
             <AppenderRef ref="ConsoleDebugLog"/>
             <AppenderRef ref="InfoRollingFileLog"/>
             <AppenderRef ref="ErrorRollingFileLog"/>
