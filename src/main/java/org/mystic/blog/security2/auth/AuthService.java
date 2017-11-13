@@ -1,6 +1,7 @@
 package org.mystic.blog.security2.auth;
 
 import org.mystic.blog.pojo.User;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -37,4 +38,13 @@ public interface AuthService {
      * @return
      */
     String refresh(String oldToken);
+
+    /**
+     * 邮箱认证
+     * @param condition
+     * @param sender
+     * @param javaMailSender
+     * @return
+     */
+    Map<String,Object> mailAuth(Map<String, Object> condition, String sender, JavaMailSender javaMailSender);
 }

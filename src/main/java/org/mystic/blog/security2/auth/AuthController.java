@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mystic.blog.utils.ResultFormatter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,12 @@ import java.util.Map;
 public class AuthController {
     @Value("${jwt.header}")
     private String tokenHeader;
+
+    @Value("${spring.mail.username}")
+    private String sender;
+
+    @Resource
+    private JavaMailSender javaMailSender;
 
     @Resource
     private AuthService authService;
@@ -56,5 +63,10 @@ public class AuthController {
     @PostMapping("${jwt.route.authentication.register}")
     public Map<String, Object> register(@RequestBody Map<String, Object> condition, HttpServletRequest request) throws AuthenticationException {
         return authService.register(condition,request);
+    }
+
+    @PostMapping("auth/email")
+    public Map<String,Object> authenticateMail(@RequestBody Map<String,Object> condition){
+        return authService.mailAuth(condition,sender,javaMailSender);
     }
 }

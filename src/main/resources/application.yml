@@ -1,6 +1,19 @@
 server:
     port: 8080
 spring:
+    mail:
+        protocol: smtp #smtp是邮件发送协议，pop3和imap是邮件接收协议。因为我们要发送邮件，因此是smtp
+        host: smtp.qq.com #邮件发送服务器的主机,这里采用qq邮箱服务器
+        port: 587
+        username: 793166729@qq.com
+        password: fbjqemntsyjlbbhh
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
     output:
         ansi:
             enabled: always
