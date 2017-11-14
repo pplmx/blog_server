@@ -51,3 +51,4 @@ jwt:
             path: auth
             refresh: refresh
             register: "auth/register"
+            email: "auth/email"

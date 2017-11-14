@@ -45,6 +45,7 @@ import java.util.Random;
 public class AuthServiceImpl implements AuthService {
 
     private static String CODE = null;
+    private static String EMAIL = null;
 
     private AuthenticationManager authenticationManager;
     private UserDetailsService userDetailsService;
@@ -74,11 +75,12 @@ public class AuthServiceImpl implements AuthService {
             return ResultFormatter.formatResult(500, "username has already existed", null);
         }
         String code = condition.get("code")==null?null:condition.get("code").toString();
-        if (code==null||"".equals(code)){
-            return ResultFormatter.formatResult(500, "verification code is wrong", null);
+        String email = condition.get("userEmail")==null?null:condition.get("userEmail").toString();
+        if (email==null||"".equals(email)||!email.equals(EMAIL)){
+            return ResultFormatter.formatResult(500, "email is wrong", null);
         }
-        if (code.equals(CODE)){
-
+        if (code==null||"".equals(code)||!code.equals(CODE)){
+            return ResultFormatter.formatResult(500, "verification code is wrong", null);
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         final String rawPassword = condition.get("userPWD").toString();
@@ -133,6 +135,7 @@ public class AuthServiceImpl implements AuthService {
     public Map<String, Object> mailAuth(Map<String, Object> condition, String sender, JavaMailSender javaMailSender) {
         Map<String, Object> userEmail = new HashMap<>(16);
         String receiveEmail = condition.get("userEmail").toString();
+        EMAIL = receiveEmail;
         userEmail.put("userEmail", receiveEmail);
         if (!userDAO.select(userEmail).isEmpty()) {
             // 如果邮箱存在

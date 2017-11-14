@@ -1,12 +1,13 @@
 package org.mystic.blog.security2.auth;
 
-import lombok.extern.slf4j.Slf4j;
 import org.mystic.blog.utils.ResultFormatter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -65,7 +66,7 @@ public class AuthController {
         return authService.register(condition,request);
     }
 
-    @PostMapping("auth/email")
+    @PostMapping("${jwt.route.authentication.email}")
     public Map<String,Object> authenticateMail(@RequestBody Map<String,Object> condition){
         return authService.mailAuth(condition,sender,javaMailSender);
     }
