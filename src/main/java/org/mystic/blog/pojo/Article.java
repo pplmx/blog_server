@@ -3,6 +3,8 @@ package org.mystic.blog.pojo;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -17,7 +19,7 @@ import lombok.ToString;
 public class Article {
     private Integer articleID;
     private String articleName;
-    private String articleTime;
+    private Date articleTime;
     private String articleIP;
     private int articlePV;
     private int articleType;
