@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.mystic.blog.dao.ArticleSortDAO">
+    <!-- 开启基于redis的二级缓存 -->
+    <!--<cache type="org.mystic.blog.utils.RedisCache"/>-->
+
     <select id="select" parameterType="map" resultType="map">
         SELECT sortArticleID,sortArticleName,userID FROM article_sort
         <include refid="select_where"/>
@@ -26,7 +29,7 @@
         </foreach>
     </delete>
 
-    <update id="update" parameterType="map">
+    <update id="update" parameterType="map" flushCache="true">
         UPDATE article_sort
         <set>
             <if test="sortArticleName != null and sortArticleName != ''">sortArticleName = #{sortArticleName},</if>

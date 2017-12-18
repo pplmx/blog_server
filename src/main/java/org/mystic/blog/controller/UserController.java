@@ -73,7 +73,7 @@ public class UserController {
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
-    @PostAuthorize("returnObject.username == principal.username or hasRole('SUPER')")
+    @PreAuthorize("authentication.name == principal.username or hasRole('SUPER')")
     @ApiOperation(value = "修改用户信息", notes = "修改用户信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userID", value = "用户ID", required = true, dataType = "integer", paramType = "path"),

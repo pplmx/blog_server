@@ -3,6 +3,7 @@ package org.mystic.blog.pojo;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Date;
  */
 @Data
 @ToString
-public class Article {
+public class Article implements Serializable {
     private Integer articleID;
     private String articleName;
     private Date articleTime;

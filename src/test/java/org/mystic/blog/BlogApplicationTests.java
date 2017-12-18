@@ -2,18 +2,27 @@ package org.mystic.blog;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mystic.blog.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -58,6 +67,27 @@ public class BlogApplicationTests {
         }
 
         javaMailSender.send(message);
+    }
+
+    @Test
+    public void test() {
+        RestTemplate restTemplate = new RestTemplate();
+        int userID = 8;
+        @SuppressWarnings("unchecked")
+        Map<String, Object> user = restTemplate.getForObject("http://localhost:8080/users/" + userID, HashMap.class);
+        //assertThat(user.getUserSex()).isEqualTo(1);
+        System.out.println("user = " + user);
+
+        User newUser = new User();
+        newUser.setUserName("哈哈");
+        newUser.setUserEmail("21@qq.com");
+        newUser.setUserPWD("123456");
+        newUser.setUserSex(0);
+        newUser.setUserPhone("18888888888");
+        newUser.setUserQQ("232323232");
+        restTemplate.put("http://localhost:8080/users/" + userID, newUser);
+        User testUser = restTemplate.getForObject("http://localhost:8080/users/" + userID, User.class);
+        System.out.println("testUser = " + testUser);
     }
 
 }

@@ -3,6 +3,8 @@ package org.mystic.blog.pojo;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -14,7 +16,7 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class Blog {
+public class Blog implements Serializable {
     private Integer blogID;
     private String blogKey;
     private String blogDescription;

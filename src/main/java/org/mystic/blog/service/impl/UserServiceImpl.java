@@ -3,6 +3,7 @@ package org.mystic.blog.service.impl;
 import org.mystic.blog.dao.UserDAO;
 import org.mystic.blog.service.UserService;
 import org.mystic.blog.utils.WebServletUtil;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -34,9 +35,18 @@ public class UserServiceImpl implements UserService {
         Object userID = condition.get("userID");
         String userLastLoginIP = WebServletUtil.getClientIpAddress(request);
         condition.put("userLastLoginIP", userLastLoginIP);
+        // 对密码进行加密
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if (userID != null) {
+            //  更新
+            Object password = condition.get("userPWD");
+            if (password != null && !"".equals(password.toString())) {
+                condition.put("userPWD", encoder.encode(password.toString()));
+            }
             return userDAO.update(condition);
         }
+        Object password = condition.get("userPWD");
+        condition.put("userPWD", encoder.encode(password.toString()));
         return userDAO.insert(condition);
     }
 
