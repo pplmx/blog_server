@@ -2,15 +2,11 @@ package org.mystic.blog;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mystic.blog.pojo.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,8 +17,6 @@ import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -73,20 +67,21 @@ public class BlogApplicationTests {
     public void test() {
         RestTemplate restTemplate = new RestTemplate();
         int userID = 8;
-        @SuppressWarnings("unchecked")
+        //noinspection unchecked
         Map<String, Object> user = restTemplate.getForObject("http://localhost:8080/users/" + userID, HashMap.class);
         //assertThat(user.getUserSex()).isEqualTo(1);
         System.out.println("user = " + user);
 
-        User newUser = new User();
-        newUser.setUserName("哈哈");
-        newUser.setUserEmail("21@qq.com");
-        newUser.setUserPWD("123456");
-        newUser.setUserSex(0);
-        newUser.setUserPhone("18888888888");
-        newUser.setUserQQ("232323232");
+        Map<String, Object> newUser = new HashMap<>(16);
+        newUser.put("userName", "嘿嘿");
+        newUser.put("userEmail", "21@qq.com");
+        newUser.put("userPWD", "123456");
+        newUser.put("userSex", 0);
+        newUser.put("userPhone", "18888888888");
+        newUser.put("userQQ", "232323232");
         restTemplate.put("http://localhost:8080/users/" + userID, newUser);
-        User testUser = restTemplate.getForObject("http://localhost:8080/users/" + userID, User.class);
+        //noinspection unchecked
+        Map<String,Object> testUser = restTemplate.getForObject("http://localhost:8080/users/" + userID, HashMap.class);
         System.out.println("testUser = " + testUser);
     }
 

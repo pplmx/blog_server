@@ -43,9 +43,13 @@ public class ApplicationContextUtil{
      * @param name
      * @return
      */
-    @SuppressWarnings("unchecked")
     public static <T> T getBean(String name) {
-        return (T) applicationContext.getBean(name);
+        Object obj = applicationContext.getBean(name);
+        if (obj != null) {
+            //noinspection unchecked
+            return (T) obj;
+        }
+        return null ;
     }
 
     /**

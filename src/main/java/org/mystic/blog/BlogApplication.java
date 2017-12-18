@@ -1,8 +1,10 @@
 package org.mystic.blog;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.mystic.blog.utils.ApplicationContextUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -20,7 +22,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class BlogApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BlogApplication.class, args);
+        ApplicationContext context = SpringApplication.run(BlogApplication.class, args);
+        ApplicationContextUtil.setApplicationContext(context);
     }
 
 }
