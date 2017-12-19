@@ -3,6 +3,9 @@ package org.mystic.blog.service.impl;
 import org.mystic.blog.dao.UserDAO;
 import org.mystic.blog.service.UserService;
 import org.mystic.blog.utils.WebServletUtil;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +23,13 @@ import java.util.Map;
  * @version: X
  * Description:
  */
+@CacheConfig(cacheNames = "users")
 @Service
 public class UserServiceImpl implements UserService {
     @Resource
     private UserDAO userDAO;
 
+    @Cacheable(keyGenerator = "keyGenerator")
     @Override
     public List<Map<String, Object>> findUser(Map<String, Object> condition) {
         return userDAO.select(condition);

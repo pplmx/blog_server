@@ -1,9 +1,15 @@
 package org.mystic.blog;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mystic.blog.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -17,6 +23,7 @@ import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -63,26 +70,39 @@ public class BlogApplicationTests {
         javaMailSender.send(message);
     }
 
-    @Test
-    public void test() {
-        RestTemplate restTemplate = new RestTemplate();
-        int userID = 8;
-        //noinspection unchecked
-        Map<String, Object> user = restTemplate.getForObject("http://localhost:8080/users/" + userID, HashMap.class);
-        //assertThat(user.getUserSex()).isEqualTo(1);
-        System.out.println("user = " + user);
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
-        Map<String, Object> newUser = new HashMap<>(16);
-        newUser.put("userName", "嘿嘿");
-        newUser.put("userEmail", "21@qq.com");
-        newUser.put("userPWD", "123456");
-        newUser.put("userSex", 0);
-        newUser.put("userPhone", "18888888888");
-        newUser.put("userQQ", "232323232");
-        restTemplate.put("http://localhost:8080/users/" + userID, newUser);
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Test
+    public void test1(){
+        stringRedisTemplate.opsForValue().set("aaa", "111",20,TimeUnit.SECONDS);
+        Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("aaa"));
+    }
+
+    @Test
+    public void testObj() throws Exception {
+        User user=new User();
+        user.setUserName("cc");
+        user.setUserPWD("123456");
+        user.setUserSex(0);
         //noinspection unchecked
-        Map<String,Object> testUser = restTemplate.getForObject("http://localhost:8080/users/" + userID, HashMap.class);
-        System.out.println("testUser = " + testUser);
+        ValueOperations<String, User> operations=redisTemplate.opsForValue();
+        //operations.set("com.neox", user);
+        operations.set("com.neox", user,20,TimeUnit.SECONDS);
+        operations.set("com.neo.f", user,20, TimeUnit.SECONDS);
+        Thread.sleep(1000);
+        //redisTemplate.delete("com.neo.f");
+        //noinspection unchecked
+        boolean exists=redisTemplate.hasKey("com.neo.f");
+        if(exists){
+            System.out.println("exists is true");
+        }else{
+            System.out.println("exists is false");
+        }
+        // Assert.assertEquals("aa", operations.get("com.neo.f").getUserName());
     }
 
 }
