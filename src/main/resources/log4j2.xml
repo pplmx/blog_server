@@ -5,7 +5,7 @@
 
     <!-- 定义日志存放目录（相对路径） -->
     <properties>
-        <property name="logPath">/var/log/myapp/blog</property>
+        <property name="logPath">logs</property>
     </properties>
 
     <!-- 定义所有的输出器 -->
