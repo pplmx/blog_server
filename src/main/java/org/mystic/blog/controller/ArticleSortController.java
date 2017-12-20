@@ -26,6 +26,7 @@ import java.util.Map;
 @Api("API_ArticleSort")
 @RestController
 @RequestMapping("/sorts")
+@CrossOrigin
 public class ArticleSortController {
     @Resource
     private ArticleSortService articleSortService;

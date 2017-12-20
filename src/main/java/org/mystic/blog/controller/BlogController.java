@@ -28,6 +28,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/blogs")
 @PreAuthorize("hasRole('USER')")
+@CrossOrigin
 public class BlogController {
     @Resource
     private BlogService blogService;

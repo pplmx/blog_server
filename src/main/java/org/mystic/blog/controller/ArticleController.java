@@ -26,6 +26,7 @@ import java.util.Map;
 @Api("API_Article")
 @RestController
 @RequestMapping("/articles")
+@CrossOrigin
 public class ArticleController {
     @Resource
     private ArticleService articleService;

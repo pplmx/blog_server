@@ -24,6 +24,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/roles")
 @PreAuthorize("hasRole('SUPER')")
+@CrossOrigin
 public class RoleController {
     @Resource
     private RoleService roleService;
