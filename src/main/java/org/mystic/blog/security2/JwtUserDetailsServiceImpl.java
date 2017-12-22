@@ -38,14 +38,14 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
                 put("userName", username);
             }
         };
-        List<Map<String,Object>> userList = userDAO.select(userName);
+        List<Map<String, Object>> userList = userDAO.select(userName);
         if (userList.isEmpty()) {
             throw new UsernameNotFoundException(String.format("No user found with username '%s'.", username));
         }
-        Map<String,Object> userMap = userList.get(0);
-        List<Map<String,Object>> userRoleList = userDAO.selectRole(userMap);
+        Map<String, Object> userMap = userList.get(0);
+        List<Map<String, Object>> userRoleList = userDAO.selectRole(userMap);
         List<String> authorities = new ArrayList<>();
-        userRoleList.forEach(userRole->authorities.add(userRole.get("roleName").toString()));
+        userRoleList.forEach(userRole -> authorities.add(userRole.get("roleName").toString()));
         User user = new User();
         user.setUserID(Integer.parseInt(userMap.get("userID").toString()));
         user.setUserName(userMap.get("userName").toString());

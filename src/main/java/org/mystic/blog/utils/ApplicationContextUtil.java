@@ -13,7 +13,7 @@ import org.springframework.context.ApplicationContextAware;
  * @version: X
  * Description:
  */
-public class ApplicationContextUtil{
+public class ApplicationContextUtil {
 
 
     private static ApplicationContext applicationContext;
@@ -49,7 +49,7 @@ public class ApplicationContextUtil{
             //noinspection unchecked
             return (T) obj;
         }
-        return null ;
+        return null;
     }
 
     /**

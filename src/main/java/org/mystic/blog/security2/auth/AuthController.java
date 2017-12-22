@@ -38,36 +38,36 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("${jwt.route.authentication.path}")
-    public Map<String,Object> createAuthenticationToken(
-            @RequestBody Map<String,Object> condition) throws AuthenticationException {
+    public Map<String, Object> createAuthenticationToken(
+            @RequestBody Map<String, Object> condition) throws AuthenticationException {
         final String token = authService.login(condition);
         // Return the token
-        Map<String,Object> result = new HashMap<>(16);
-        result.put("token",token);
-        return ResultFormatter.formatResult(200,"SUCCESS",result);
+        Map<String, Object> result = new HashMap<>(16);
+        result.put("token", token);
+        return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
     @GetMapping("${jwt.route.authentication.refresh}")
-    public Map<String,Object> refreshAndGetAuthenticationToken(
+    public Map<String, Object> refreshAndGetAuthenticationToken(
             HttpServletRequest request) throws AuthenticationException {
         String token = request.getHeader(tokenHeader);
         String refreshedToken = authService.refresh(token);
         if (refreshedToken == null) {
-            return ResultFormatter.formatResult(500,"FAILURE",null);
+            return ResultFormatter.formatResult(500, "FAILURE", null);
         } else {
-            Map<String,Object> result = new HashMap<>(16);
-            result.put("refreshedToken",refreshedToken);
-            return ResultFormatter.formatResult(200,"SUCCESS",result);
+            Map<String, Object> result = new HashMap<>(16);
+            result.put("refreshedToken", refreshedToken);
+            return ResultFormatter.formatResult(200, "SUCCESS", result);
         }
     }
 
     @PostMapping("${jwt.route.authentication.register}")
     public Map<String, Object> register(@RequestBody Map<String, Object> condition, HttpServletRequest request) throws AuthenticationException {
-        return authService.register(condition,request);
+        return authService.register(condition, request);
     }
 
     @PostMapping("${jwt.route.authentication.email}")
-    public Map<String,Object> authenticateMail(@RequestBody Map<String,Object> condition){
-        return authService.mailAuth(condition,sender,javaMailSender);
+    public Map<String, Object> authenticateMail(@RequestBody Map<String, Object> condition) {
+        return authService.mailAuth(condition, sender, javaMailSender);
     }
 }

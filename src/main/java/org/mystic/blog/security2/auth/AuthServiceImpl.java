@@ -68,32 +68,32 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public Map<String,Object> register(Map<String, Object> condition, HttpServletRequest request) {
+    public Map<String, Object> register(Map<String, Object> condition, HttpServletRequest request) {
         Map<String, Object> userName = new HashMap<>(16);
         userName.put("userName", condition.get("userName"));
         if (!userDAO.select(userName).isEmpty()) {
             return ResultFormatter.formatResult(500, "username has already existed", null);
         }
-        String code = condition.get("code")==null?null:condition.get("code").toString();
-        String email = condition.get("userEmail")==null?null:condition.get("userEmail").toString();
-        if (email==null||"".equals(email)||!email.equals(EMAIL)){
+        String code = condition.get("code") == null ? null : condition.get("code").toString();
+        String email = condition.get("userEmail") == null ? null : condition.get("userEmail").toString();
+        if (email == null || "".equals(email) || !email.equals(EMAIL)) {
             return ResultFormatter.formatResult(500, "email is wrong", null);
         }
-        if (code==null||"".equals(code)||!code.equals(CODE)){
+        if (code == null || "".equals(code) || !code.equals(CODE)) {
             return ResultFormatter.formatResult(500, "verification code is wrong", null);
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         final String rawPassword = condition.get("userPWD").toString();
         condition.replace("userPWD", encoder.encode(rawPassword));
         // 设置默认初始值
-        condition.put("userPhone","");
-        condition.put("userQQ","");
-        condition.put("userSex",0);
+        condition.put("userPhone", "");
+        condition.put("userQQ", "");
+        condition.put("userSex", 0);
         condition.put("userLastLoginIP", WebServletUtil.getClientIpAddress(request));
         // 先注册用户
         userDAO.insert(condition);
         // 获取注册用户ID
-        Map<String,Object> newUser = userDAO.select(userName).get(0);
+        Map<String, Object> newUser = userDAO.select(userName).get(0);
         Integer userID = Integer.parseInt(newUser.get("userID").toString());
         Map<String, Object> userRole = new HashMap<String, Object>(16) {
             {
@@ -107,7 +107,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String login(Map<String,Object> condition) {
+    public String login(Map<String, Object> condition) {
         String username = condition.get("userName").toString();
         String password = condition.get("userPWD").toString();
         UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password);
@@ -146,27 +146,28 @@ public class AuthServiceImpl implements AuthService {
         try {
             message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(new InternetAddress(sender,"caoyu.info","UTF-8"));
+            helper.setFrom(new InternetAddress(sender, "caoyu.info", "UTF-8"));
             helper.setTo(receiveEmail);
             helper.setSubject("标题：验证码");
             // 生成验证码
             CODE = generateVerificationCode();
-            String text = "<p style='color:#F00'>"+CODE+"</p>";
+            String text = "<p style='color:#F00'>" + CODE + "</p>";
             helper.setText(text, true);
         } catch (MessagingException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         javaMailSender.send(message);
-        Map<String,Object> result = new HashMap<>(16);
-        result.put("code",CODE);
+        Map<String, Object> result = new HashMap<>(16);
+        result.put("code", CODE);
         return ResultFormatter.formatResult(200, "Verification Code generated.", result);
     }
 
     /**
      * 生成随机验证码
+     *
      * @return
      */
-    private String generateVerificationCode(){
+    private String generateVerificationCode() {
         StringBuilder sb = new StringBuilder();
         int num = 6;
         Random random = new Random();

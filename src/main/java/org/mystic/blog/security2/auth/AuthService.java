@@ -18,18 +18,20 @@ import java.util.Map;
 public interface AuthService {
     /**
      * 用户注册
+     *
      * @param condition
      * @param request
      * @return
      */
-    Map<String,Object> register(Map<String,Object> condition, HttpServletRequest request);
+    Map<String, Object> register(Map<String, Object> condition, HttpServletRequest request);
 
     /**
      * 用户登录
+     *
      * @param condition
      * @return
      */
-    String login(Map<String,Object> condition);
+    String login(Map<String, Object> condition);
 
     /**
      * token刷新
@@ -41,10 +43,11 @@ public interface AuthService {
 
     /**
      * 邮箱认证
+     *
      * @param condition
      * @param sender
      * @param javaMailSender
      * @return
      */
-    Map<String,Object> mailAuth(Map<String, Object> condition, String sender, JavaMailSender javaMailSender);
+    Map<String, Object> mailAuth(Map<String, Object> condition, String sender, JavaMailSender javaMailSender);
 }
