@@ -78,8 +78,8 @@
     <Loggers>
 
         <!-- 项目整体默认日志配置，此处最低级别为 debug -->
-        <Root level="info">
-            <AppenderRef ref="ConsoleDebugLog"/>
+        <Root level="debug">
+            <AppenderRef ref="ConsoleInfoLog"/>
             <AppenderRef ref="DebugRollingFileLog"/>
             <AppenderRef ref="InfoRollingFileLog"/>
             <AppenderRef ref="ErrorRollingFileLog"/>
