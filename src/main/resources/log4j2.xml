@@ -4,8 +4,9 @@
 <Configuration status="OFF">
 
     <!-- 定义日志存放目录（相对路径） -->
+    <!--这个路径表示,从当前盘符开始-->
     <properties>
-        <property name="logPath">var/log/myapp/blog</property>
+        <property name="logPath">/var/log/myapp/blog</property>
     </properties>
 
     <!-- 定义所有的输出器 -->
