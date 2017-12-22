@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @Api("API_Article")
 @RestController
-@RequestMapping("/articles")
+@RequestMapping("/api/articles")
 @CrossOrigin
 public class ArticleController {
     @Resource
@@ -60,7 +60,7 @@ public class ArticleController {
         Map<String, Object> result = new HashMap<>(16);
         List<Map<String, Object>> articleList = articleService.findArticle(map);
         Map<String, Object> article = articleList == null ? null : articleList.get(0);
-        if(article!=null){
+        if (article != null) {
             // 每查询一次,PV+1
             article.replace("articlePV", Integer.parseInt(article.get("articlePV").toString()) + 1);
             articleService.saveArticle(article, request);

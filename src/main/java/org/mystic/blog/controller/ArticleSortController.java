@@ -9,7 +9,6 @@ import org.mystic.blog.utils.ResultFormatter;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +24,7 @@ import java.util.Map;
  */
 @Api("API_ArticleSort")
 @RestController
-@RequestMapping("/sorts")
+@RequestMapping("/api/sorts")
 @CrossOrigin
 public class ArticleSortController {
     @Resource

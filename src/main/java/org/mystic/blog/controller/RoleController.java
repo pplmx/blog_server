@@ -6,11 +6,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,7 +20,7 @@ import java.util.Optional;
  * Description:
  */
 @RestController
-@RequestMapping("/roles")
+@RequestMapping("/api/roles")
 @PreAuthorize("hasRole('SUPER')")
 @CrossOrigin
 public class RoleController {
@@ -50,10 +48,10 @@ public class RoleController {
     }
 
     @PostMapping("/getByName")
-    public Map<String,Object> showRoleByName(@RequestBody Map<String, Object> condition){
-        Map<String,Object> result = new HashMap<>(16);
-        result.put("role",roleService.findRole(condition));
-        return ResultFormatter.formatResult(200,"SUCCESS",result);
+    public Map<String, Object> showRoleByName(@RequestBody Map<String, Object> condition) {
+        Map<String, Object> result = new HashMap<>(16);
+        result.put("role", roleService.findRole(condition));
+        return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
     @PostMapping

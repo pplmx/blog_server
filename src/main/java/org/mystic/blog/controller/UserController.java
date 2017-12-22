@@ -1,10 +1,12 @@
 package org.mystic.blog.controller;
 
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
 import org.mystic.blog.service.UserService;
 import org.mystic.blog.utils.ResultFormatter;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +27,7 @@ import java.util.Map;
  */
 @Api("API_User")
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @CrossOrigin
 public class UserController {
     @Resource
@@ -100,20 +102,20 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{userID}/{roleID}")
-    public Map<String,Object> removeUserRole(@PathVariable("userID") @Required Integer userID, @PathVariable("roleID") Integer roleID){
-        Map<String,Object> condition = new HashMap<>(16);
-        condition.put("userID",userID);
-        condition.put("roleID",roleID);
+    public Map<String, Object> removeUserRole(@PathVariable("userID") @Required Integer userID, @PathVariable("roleID") Integer roleID) {
+        Map<String, Object> condition = new HashMap<>(16);
+        condition.put("userID", userID);
+        condition.put("roleID", roleID);
         int result = userService.deleteUserRole(condition);
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{userID}/{roleID}")
-    public Map<String,Object> addUserRole(@PathVariable("userID") @Required Integer userID, @PathVariable("roleID") @Required Integer roleID){
-        Map<String,Object> condition = new HashMap<>(16);
-        condition.put("userID",userID);
-        condition.put("roleID",roleID);
+    public Map<String, Object> addUserRole(@PathVariable("userID") @Required Integer userID, @PathVariable("roleID") @Required Integer roleID) {
+        Map<String, Object> condition = new HashMap<>(16);
+        condition.put("userID", userID);
+        condition.put("roleID", roleID);
         int result = userService.insertUserRole(condition);
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }

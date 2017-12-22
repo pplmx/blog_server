@@ -10,7 +10,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +25,7 @@ import java.util.Map;
  */
 @Api("API_Blog")
 @RestController
-@RequestMapping("/blogs")
+@RequestMapping("/api/blogs")
 @PreAuthorize("hasRole('USER')")
 @CrossOrigin
 public class BlogController {
@@ -60,7 +59,7 @@ public class BlogController {
         Map<String, Object> map = new HashMap<>(16);
         map.put("blogID", blogID);
         Map<String, Object> result = new HashMap<>(16);
-        List<Map<String,Object>> blogList = blogService.findBlog(map);
+        List<Map<String, Object>> blogList = blogService.findBlog(map);
         result.put("blog", blogList == null ? null : blogList.get(0));
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
