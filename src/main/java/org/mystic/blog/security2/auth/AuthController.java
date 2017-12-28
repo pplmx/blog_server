@@ -44,6 +44,7 @@ public class AuthController {
         // Return the token
         Map<String, Object> result = new HashMap<>(16);
         result.put("token", token);
+        result.put("expiration", 604800);
         return ResultFormatter.formatResult(200, "SUCCESS", result);
     }
 
