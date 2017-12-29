@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * @version: X
  * Description:
  */
-@Target({ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ApiVersion {
     /**

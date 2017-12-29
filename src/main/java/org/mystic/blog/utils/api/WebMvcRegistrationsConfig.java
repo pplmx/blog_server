@@ -1,6 +1,7 @@
 package org.mystic.blog.utils.api;
 
 import org.springframework.boot.autoconfigure.web.WebMvcRegistrationsAdapter;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  * @version: X
  * Description:
  */
+@Configuration
 public class WebMvcRegistrationsConfig extends WebMvcRegistrationsAdapter {
 
     @Override
