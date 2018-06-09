@@ -1,7 +1,5 @@
 package org.mystic.blog.service;
 
-import org.apache.http.HttpRequest;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
@@ -34,8 +32,9 @@ public interface ArticleService {
 
     /**
      * 保存文章信息
+     *
      * @param condition 文章信息
-     * @param request request请求
+     * @param request   request请求
      * @return 影响的行数
      */
     int saveArticle(Map<String, Object> condition, HttpServletRequest request);

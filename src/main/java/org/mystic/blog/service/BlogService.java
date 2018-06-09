@@ -1,6 +1,5 @@
 package org.mystic.blog.service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +31,7 @@ public interface BlogService {
 
     /**
      * 保存博客信息
+     *
      * @param condition 博客信息
      * @return 影响的行数
      */
@@ -39,8 +39,9 @@ public interface BlogService {
 
     /**
      * 删除条件Blog信息
+     *
      * @param condition 条件
      * @return 影响的行数
      */
-    int deleteBlog(Map<String,Object> condition);
+    int deleteBlog(Map<String, Object> condition);
 }

@@ -49,6 +49,7 @@ public interface UserService {
 
     /**
      * 撤销用户角色
+     *
      * @param condition 条件
      * @return 影响的行数
      */
@@ -56,6 +57,7 @@ public interface UserService {
 
     /**
      * 授予用户角色
+     *
      * @param condition 条件
      * @return 影响的行数
      */

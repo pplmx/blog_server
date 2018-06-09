@@ -4,7 +4,6 @@ import org.mystic.blog.dao.UserDAO;
 import org.mystic.blog.service.UserService;
 import org.mystic.blog.utils.WebServletUtil;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

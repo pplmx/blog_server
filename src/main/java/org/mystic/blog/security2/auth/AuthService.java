@@ -1,6 +1,5 @@
 package org.mystic.blog.security2.auth;
 
-import org.mystic.blog.pojo.User;
 import org.springframework.mail.javamail.JavaMailSender;
 
 import javax.servlet.http.HttpServletRequest;

@@ -14,33 +14,30 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BlogApplicationTests {
     @Resource
-	private JavaMailSender javaMailSender;
+    private JavaMailSender javaMailSender;
 
     @Value("${spring.mail.username}")
     private String sender;
 
-	@Test
-	public void contextLoads() {
+    @Test
+    public void contextLoads() {
 
-	}
+    }
 
-	@Test
-	public void testSendSimpleMail() {
+    @Test
+    public void testSendSimpleMail() {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(sender);//发送者.
         message.setTo("215104920@qq.com");//接收者.
@@ -55,7 +52,7 @@ public class BlogApplicationTests {
         try {
             message = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(new InternetAddress(sender,"caoyu.info","UTF-8"));
+            helper.setFrom(new InternetAddress(sender, "caoyu.info", "UTF-8"));
             helper.setTo("215104920@qq.com");
             helper.setSubject("标题：发送Html内容");
 
@@ -77,29 +74,29 @@ public class BlogApplicationTests {
     private RedisTemplate redisTemplate;
 
     @Test
-    public void test1(){
-        stringRedisTemplate.opsForValue().set("aaa", "111",20,TimeUnit.SECONDS);
+    public void test1() {
+        stringRedisTemplate.opsForValue().set("aaa", "111", 20, TimeUnit.SECONDS);
         Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("aaa"));
     }
 
     @Test
     public void testObj() throws Exception {
-        User user=new User();
+        User user = new User();
         user.setUserName("cc");
         user.setUserPWD("123456");
         user.setUserSex(0);
         //noinspection unchecked
-        ValueOperations<String, User> operations=redisTemplate.opsForValue();
+        ValueOperations<String, User> operations = redisTemplate.opsForValue();
         //operations.set("com.neox", user);
-        operations.set("com.neox", user,20,TimeUnit.SECONDS);
-        operations.set("com.neo.f", user,20, TimeUnit.SECONDS);
+        operations.set("com.neox", user, 20, TimeUnit.SECONDS);
+        operations.set("com.neo.f", user, 20, TimeUnit.SECONDS);
         Thread.sleep(1000);
         //redisTemplate.delete("com.neo.f");
         //noinspection unchecked
-        boolean exists=redisTemplate.hasKey("com.neo.f");
-        if(exists){
+        boolean exists = redisTemplate.hasKey("com.neo.f");
+        if (exists) {
             System.out.println("exists is true");
-        }else{
+        } else {
             System.out.println("exists is false");
         }
         // Assert.assertEquals("aa", operations.get("com.neo.f").getUserName());

@@ -31,6 +31,7 @@ public interface RoleService {
 
     /**
      * 保存角色信息
+     *
      * @param condition 条件
      * @return 影响的行数
      */

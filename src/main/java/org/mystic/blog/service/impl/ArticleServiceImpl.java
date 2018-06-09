@@ -1,6 +1,5 @@
 package org.mystic.blog.service.impl;
 
-import org.apache.http.HttpRequest;
 import org.mystic.blog.dao.ArticleDAO;
 import org.mystic.blog.service.ArticleService;
 import org.mystic.blog.utils.WebServletUtil;
@@ -43,8 +42,8 @@ public class ArticleServiceImpl implements ArticleService {
         }
         // 记录执行添加操作的IP
         String articleIP = WebServletUtil.getClientIpAddress(request);
-        condition.put("articleIP",articleIP);
-        condition.put("articlePV",0);
+        condition.put("articleIP", articleIP);
+        condition.put("articlePV", 0);
         return articleDAO.insert(condition);
     }
 
